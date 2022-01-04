@@ -1,0 +1,154 @@
+﻿@using WebMarmelad.Models.FilterSortView;
+@using WebMarmelad.Models.CodeFirst;
+@model FilterSortViewModel
+@{
+    Production production = new Production();
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="pb-1">
+                <form asp-action="Index">
+                    <input id="filterCost" name="filterCost" type="number" value="@Model.FilterModel.SelectedCost" placeholder="Стоимость" />
+                    <input id="filterPower" name="filterPower" type="number" value="@Model.FilterModel.SelectedPower" placeholder="Электроэнергия" />
+                    <input id="filterPowerCount" name="filterPowerCount" type="number" value="@Model.FilterModel.SelectedPowerCount" placeholder="Мощность (ед)" />
+                    <input id="filterPowerTime" name="filterPowerTime" type="number" value="@Model.FilterModel.SelectedPowerTime" placeholder="Затраты времени" />
+                    <button class="btn btn-primary" type="submit">Поиск</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sort="@Model.SortModel.IdSort"
+                   asp-route-filterCost="@Model.FilterModel.SelectedCost"
+                   asp-route-filterPower="@Model.FilterModel.SelectedPower"
+                   asp-route-filterPowerCount="@Model.FilterModel.SelectedPowerCount"
+                   asp-route-filterPowerTime="@Model.FilterModel.SelectedPowerTime">
+                    @Html.DisplayNameFor(model=>production.Id)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sort="@Model.SortModel.NameSort"
+                   asp-route-filterCost="@Model.FilterModel.SelectedCost"
+                   asp-route-filterPower="@Model.FilterModel.SelectedPower"
+                   asp-route-filterPowerCount="@Model.FilterModel.SelectedPowerCount"
+                   asp-route-filterPowerTime="@Model.FilterModel.SelectedPowerTime">
+                    @Html.DisplayNameFor(model => production.Name)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sort="@Model.SortModel.CostSort"
+                   asp-route-filterCost="@Model.FilterModel.SelectedCost"
+                   asp-route-filterPower="@Model.FilterModel.SelectedPower"
+                   asp-route-filterPowerCount="@Model.FilterModel.SelectedPowerCount"
+                   asp-route-filterPowerTime="@Model.FilterModel.SelectedPowerTime">
+                    @Html.DisplayNameFor(model => production.Cost)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sort="@Model.SortModel.PowerSort"
+                   asp-route-filterCost="@Model.FilterModel.SelectedCost"
+                   asp-route-filterPower="@Model.FilterModel.SelectedPower"
+                   asp-route-filterPowerCount="@Model.FilterModel.SelectedPowerCount"
+                   asp-route-filterPowerTime="@Model.FilterModel.SelectedPowerTime">
+                    @Html.DisplayNameFor(model => production.Power)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sort="@Model.SortModel.WaterSort"
+                   asp-route-filterCost="@Model.FilterModel.SelectedCost"
+                   asp-route-filterPower="@Model.FilterModel.SelectedPower"
+                   asp-route-filterPowerCount="@Model.FilterModel.SelectedPowerCount"
+                   asp-route-filterPowerTime="@Model.FilterModel.SelectedPowerTime">
+                    @Html.DisplayNameFor(model => production.Water)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sort="@Model.SortModel.AirSort"
+                   asp-route-filterCost="@Model.FilterModel.SelectedCost"
+                   asp-route-filterPower="@Model.FilterModel.SelectedPower"
+                   asp-route-filterPowerCount="@Model.FilterModel.SelectedPowerCount"
+                   asp-route-filterPowerTime="@Model.FilterModel.SelectedPowerTime">
+                    @Html.DisplayNameFor(model => production.Air)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sort="@Model.SortModel.PowerCountSort"
+                   asp-route-filterCost="@Model.FilterModel.SelectedCost"
+                   asp-route-filterPower="@Model.FilterModel.SelectedPower"
+                   asp-route-filterPowerCount="@Model.FilterModel.SelectedPowerCount"
+                   asp-route-filterPowerTime="@Model.FilterModel.SelectedPowerTime">
+                    @Html.DisplayNameFor(model => production.PowerCount)
+                </a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-sort="@Model.SortModel.PowerTimeSort"
+                   asp-route-filterCost="@Model.FilterModel.SelectedCost"
+                   asp-route-filterPower="@Model.FilterModel.SelectedPower"
+                   asp-route-filterPowerCount="@Model.FilterModel.SelectedPowerCount"
+                   asp-route-filterPowerTime="@Model.FilterModel.SelectedPowerTime">
+                    @Html.DisplayNameFor(model => production.PowerTime)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Productions)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Power)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Water)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Air)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PowerCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PowerTime)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Подробнее</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
