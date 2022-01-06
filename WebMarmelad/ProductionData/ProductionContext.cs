@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebMarmelad.Models.CodeFirst;
+using WebMarmelad.Models.SolutionProblem;
 
 namespace WebMarmelad.ProductionData
 {
@@ -11,5 +12,9 @@ namespace WebMarmelad.ProductionData
         }
 
         public DbSet<Production> Productions { get; set; }
+
+        public DbSet<PropertyExpertModel> ExpertOne { get; set; }
+
+        public DbSet<PropertyExpertModel> ExpertTwo { get; set; }
     }
 }
