@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebMarmelad.Models.SolutionProblem
+namespace WebMarmelad.Models.PropertyValueExpert
 {
     public class PropertyExpertModel
     {
@@ -8,18 +8,18 @@ namespace WebMarmelad.Models.SolutionProblem
         public int Id { get; set; }
 
         [Display(Name = "Цена")]
-        public int BoxCostIdConst { get; set; }
+        public int CostIdValue { get; set; }
 
         [Display(Name = "Электроэнергия")]
-        public int BoxElectricityIdConst { get; set; }
+        public int PowerIdValue { get; set; }
 
         [Display(Name = "Кол-во")]
-        public int BoxPowerIdConst { get; set; }
+        public int PowerCountIdValue { get; set; }
 
         [Display(Name = "Вода")]
-        public int BoxWaterIdConst { get; set; }
+        public int WaterIdValue { get; set; }
 
         [Display(Name = "Воздух")]
-        public int BoxAirIdConst { get; set; }
+        public int AirIdValue { get; set; }
     }
 }

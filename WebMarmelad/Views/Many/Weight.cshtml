@@ -1,0 +1,216 @@
+﻿@using WebMarmelad.Models.PropertyValueExpert;
+@using WebMarmelad.Models.Weight;
+@model WeightViewModel
+@{
+    PropertyExpertModel property = new PropertyExpertModel();
+}
+@{
+    ViewData["Title"] = "Weight";
+}
+
+<div class="row">
+    <div class="col">
+        <a asp-action="Index" role="button" class="btn btn-outline-secondary">Вернуться назад</a> 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card-body">
+            <form asp-action="UpdateTableproperty" method="post">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.CostIdValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.PowerIdValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.PowerCountIdValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.WaterIdValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.AirIdValue)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 0;
+                            foreach (var item in Model.PropertyExpertOne)
+                            {
+                                <tr>
+                                    @switch (i)
+                                    {
+                                        case 0:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.CostIdValue)
+                                            </td>
+                                            break;
+                                        case 1:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.PowerIdValue)
+                                            </td>
+                                            break;
+                                        case 2:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.PowerCountIdValue)
+                                            </td>
+                                            break;
+                                        case 3:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.WaterIdValue)
+                                            </td>
+                                            break;
+                                        case 4:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.AirIdValue)
+                                            </td>
+                                            break;
+                                    }
+                                    @Html.Hidden("Id", item.Id)
+                                    <td>
+                                        @Html.DropDownList("BoxCostIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.CostIdValue))
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("BoxElectricityIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerIdValue))
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("BoxPowerIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerCountIdValue))
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("BoxWaterIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.WaterIdValue))
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("BoxAirIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.AirIdValue))
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.CostIdValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.PowerIdValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.PowerCountIdValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.WaterIdValue)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => property.AirIdValue)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            i = 0;
+                            foreach (var item in Model.PropertyExpertTwo)
+                            {
+                                <tr>
+                                    @switch (i)
+                                    {
+                                        case 0:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.CostIdValue)
+                                            </td>
+                                            break;
+                                        case 1:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.PowerIdValue)
+                                            </td>
+                                            break;
+                                        case 2:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.PowerCountIdValue)
+                                            </td>
+                                            break;
+                                        case 3:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.WaterIdValue)
+                                            </td>
+                                            break;
+                                        case 4:
+                                            <td>
+                                                @Html.DisplayNameFor(model => property.AirIdValue)
+                                            </td>
+                                            break;
+                                    }
+                                    @Html.Hidden("Id", item.Id)
+                                    <td>
+                                        @Html.DropDownList("BoxCostIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.CostIdValue))
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("BoxElectricityIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerIdValue))
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("BoxPowerIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerCountIdValue))
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("BoxWaterIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.WaterIdValue))
+                                    </td>
+                                    <td>
+                                        @Html.DropDownList("BoxAirIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.AirIdValue))
+                                    </td>
+                                </tr>
+                                i++;
+                            }
+                        }
+                    </tbody>
+                </table>
+                <input type="submit" value="Сохранить изменения" class="btn btn-primary"/>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model=>Model.WeightModel.CostWeight) = @Html.DisplayFor(model=>Model.WeightModel.CostWeight)
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model=>Model.WeightModel.ElectricityWeight) = @Html.DisplayFor(model=>Model.WeightModel.ElectricityWeight)
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model=>Model.WeightModel.PowerWeight) = @Html.DisplayFor(model=>Model.WeightModel.PowerWeight)
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model=>Model.WeightModel.WaterWeight) = @Html.DisplayFor(model=>Model.WeightModel.WaterWeight)
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model=>Model.WeightModel.AirWeignt) = @Html.DisplayFor(model=>Model.WeightModel.AirWeignt)
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model=>Model.WeightModel.BestCriteria) - @Html.DisplayFor(model=>Model.WeightModel.NameBestCriteria) = = @Html.DisplayFor(model=>Model.WeightModel.BestCriteria)
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+

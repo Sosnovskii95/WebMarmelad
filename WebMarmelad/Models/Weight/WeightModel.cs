@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebMarmelad.Models.SolutionProblem
+namespace WebMarmelad.Models.Weight
 {
     public class WeightModel
     {
@@ -22,6 +22,6 @@ namespace WebMarmelad.Models.SolutionProblem
         [Display(Name = "Лучший кретерий")]
         public double BestCriteria { get; set; }
 
-        //public string? NameBestCriteria { get; set; }
+        public string? NameBestCriteria { get; set; }
     }
 }

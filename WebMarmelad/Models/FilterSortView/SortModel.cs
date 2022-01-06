@@ -20,7 +20,7 @@
             CostSort = sort == SortAscDesc.CostAsc?SortAscDesc.CostDesc:SortAscDesc.CostAsc;
             PowerSort = sort == SortAscDesc.PowerAsc ? SortAscDesc.PowerDesc : SortAscDesc.PowerAsc;
             WaterSort = sort == SortAscDesc.WaterAsc ? SortAscDesc.WaterDesc : SortAscDesc.WaterAsc;
-            AirSort = sort == SortAscDesc.AirAsc ? SortAscDesc.AirDesc : SortAscDesc.AirDesc;
+            AirSort = sort == SortAscDesc.AirAsc ? SortAscDesc.AirDesc : SortAscDesc.AirAsc;
             PowerCountSort = sort == SortAscDesc.PowerCountAsc ? SortAscDesc.PowerCountDesc : SortAscDesc.PowerCountAsc;
             PowerTimeSort = sort == SortAscDesc.PowerTimeAsc ? SortAscDesc.PowerTimeDesc : SortAscDesc.PowerTimeAsc;
             WeightSort = sort == SortAscDesc.WeightAsc ? SortAscDesc.WeightDesc : SortAscDesc.WeightAsc;

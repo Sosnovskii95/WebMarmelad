@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using WebMarmelad.Models.CodeFirst;
 using WebMarmelad.Models.FilterSortView;
 using WebMarmelad.ProductionData;
+using WebMarmelad.Models.Weight;
+using WebMarmelad.Models.PropertyValueExpert;
 
 namespace WebMarmelad.Controllers
 {
@@ -225,6 +227,20 @@ namespace WebMarmelad.Controllers
         private bool ProductionExists(int id)
         {
             return _context.Productions.Any(e => e.Id == id);
+        }
+
+        public async Task<IActionResult> Weight()
+        {
+            ValueExpertUtil value = new ValueExpertUtil();
+            ViewBag.Weight = value.GetValueExperts();
+            WeightViewModel model = new WeightViewModel()
+            {
+                PropertyExpertOne = await _context.Expert.Take(5).ToListAsync(),
+                PropertyExpertTwo = await _context.Expert.Skip(5).ToListAsync(),
+                WeightModel = new WeightModel()
+            };
+
+            return View(model);
         }
     }
 }
