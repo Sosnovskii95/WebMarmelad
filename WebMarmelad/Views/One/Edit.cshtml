@@ -1,67 +1,72 @@
 ﻿@model WebMarmelad.Models.CodeFirst.Production
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Редактировать";
 }
 
-<h1>Edit</h1>
-
-<h4>Production</h4>
+<h1>Редактирование производственной линии</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+            <div class="p-1">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Cost" class="control-label"></label>
-                <input asp-for="Cost" class="form-control" />
-                <span asp-validation-for="Cost" class="text-danger"></span>
+            <div class="p-1">
+                <div class="form-group">
+                    <label asp-for="Cost" class="control-label"></label>
+                    <input asp-for="Cost" class="form-control" />
+                    <span asp-validation-for="Cost" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Power" class="control-label"></label>
-                <input asp-for="Power" class="form-control" />
-                <span asp-validation-for="Power" class="text-danger"></span>
+            <div class="p-1">
+                <div class="form-group">
+                    <label asp-for="Power" class="control-label"></label>
+                    <input asp-for="Power" class="form-control" />
+                    <span asp-validation-for="Power" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Water" class="control-label"></label>
-                <input asp-for="Water" class="form-control" />
-                <span asp-validation-for="Water" class="text-danger"></span>
+            <div class="p-1">
+                <div class="form-group">
+                    <label asp-for="Water" class="control-label"></label>
+                    <input asp-for="Water" class="form-control" />
+                    <span asp-validation-for="Water" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Air" /> @Html.DisplayNameFor(model => model.Air)
-                </label>
+            <div class="p-1">
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="Air" /> @Html.DisplayNameFor(model => model.Air)
+                    </label>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="PowerCount" class="control-label"></label>
-                <input asp-for="PowerCount" class="form-control" />
-                <span asp-validation-for="PowerCount" class="text-danger"></span>
+            <div class="p-1">
+                <div class="form-group">
+                    <label asp-for="PowerCount" class="control-label"></label>
+                    <input asp-for="PowerCount" class="form-control" />
+                    <span asp-validation-for="PowerCount" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="PowerTime" class="control-label"></label>
-                <input asp-for="PowerTime" class="form-control" />
-                <span asp-validation-for="PowerTime" class="text-danger"></span>
+            <div class="p-1">
+                <div class="form-group">
+                    <label asp-for="PowerTime" class="control-label"></label>
+                    <input asp-for="PowerTime" class="form-control" />
+                    <span asp-validation-for="PowerTime" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Weight" class="control-label"></label>
-                <input asp-for="Weight" class="form-control" />
-                <span asp-validation-for="Weight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="p-1">
+                <div class="form-group">
+                    <input type="submit" value="Сохранить" class="btn btn-primary" />
+                    <a asp-action="Index" role="button" class="btn btn-outline-secondary">Вернуться к списку</a>
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

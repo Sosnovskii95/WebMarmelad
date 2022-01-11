@@ -4,19 +4,19 @@ namespace WebMarmelad.Models.Weight
 {
     public class WeightModel
     {
-        [Display(Name = "Цена")]
+        [Display(Name = "Стоимость (руб)")]
         public double CostWeight { get; set; }
 
-        [Display(Name = "Электроэнергия")]
-        public double ElectricityWeight { get; set; }
-
-        [Display(Name = "Мощность")]
+        [Display(Name = "Электроэнергия (квТч)")]
         public double PowerWeight { get; set; }
 
-        [Display(Name = "Вода")]
+        [Display(Name = "Мощность (ед)")]
+        public double PowerCountWeight { get; set; }
+
+        [Display(Name = "Вода (куб)")]
         public double WaterWeight { get; set; }
 
-        [Display(Name = "Воздух")]
+        [Display(Name = "Воздух (т)")]
         public double AirWeignt { get; set; }
 
         [Display(Name = "Лучший кретерий")]

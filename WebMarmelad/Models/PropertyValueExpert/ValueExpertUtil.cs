@@ -45,6 +45,41 @@
             }
         }
 
+        public double[,] GetMatrixFromList(List<PropertyExpertModel> propertyExpertModelList)
+        {
+            PropertyExpertModel[] massValue = propertyExpertModelList.ToArray();
+
+            double[,] matrixValue = new double[massValue.Length, massValue.Length];
+
+            for (int i = 0; i < massValue.Length; i++)
+            {
+                for (int j = 0; j < massValue.Length; j++)
+                {
+                    switch (j)
+                    {
+                        case 0:
+                            matrixValue[i, j] = GetValueById(massValue[i].CostIdValue);
+                            break;
+                        case 1:
+                            matrixValue[i, j] = GetValueById(massValue[i].PowerIdValue);
+                            break;
+                        case 2:
+                            matrixValue[i, j] = GetValueById(massValue[i].PowerCountIdValue);
+                            break;
+                        case 3:
+                            matrixValue[i, j] = GetValueById(massValue[i].WaterIdValue);
+                            break;
+                        case 4:
+                            matrixValue[i, j] = GetValueById(massValue[i].AirIdValue);
+                            break;
+                        default: break;
+                    }
+                }
+            }
+
+            return matrixValue;
+        }
+
         public List<ValueExpertModel> GetValueExperts()
         {
             return _values;

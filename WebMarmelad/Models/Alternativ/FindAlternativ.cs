@@ -2,7 +2,7 @@
 {
     public class FindAlternativ
     {
-        private double[] GetPriceAlternative(double[,] dataValue)
+        protected private double[] GetPriceAlternative(double[,] dataValue)
         {
             double[] priceAlternative = new double[(int)Math.Sqrt(dataValue.Length)];
             for (int i = 0; i < priceAlternative.Length; i++)
@@ -16,7 +16,7 @@
             }
             return priceAlternative;
         }
-        private double GetSummaPriceAlternative(double[] priceAlternative)
+        protected private double GetSummaPriceAlternative(double[] priceAlternative)
         {
             double sum = 0;
             foreach (double value in priceAlternative)
@@ -24,7 +24,7 @@
             return sum;
         }
 
-        private double[] GetWeight(double[] priceAlternative, double summaAlternative)
+        protected private double[] GetWeight(double[] priceAlternative, double summaAlternative)
         {
             double[] weights = new double[priceAlternative.Length];
             for (int i = 0; i < priceAlternative.Length; i++)
@@ -34,7 +34,7 @@
             return weights;
         }
 
-        private double[] GetMainAlternative(double[] weightAlternative1, double[] weightAlternative2)
+        protected private double[] GetMainAlternative(double[] weightAlternative1, double[] weightAlternative2)
         {
             double[] mainAlternative = new double[weightAlternative1.Length];
             for (int i = 0; i < weightAlternative1.Length; i++)
@@ -44,7 +44,7 @@
             return mainAlternative;
         }
 
-        private int GetIndexBestWeigth(double[] values)
+        protected private int GetIndexBestWeigth(double[] values)
         {
             double compare = values[0];
             int index = 0;

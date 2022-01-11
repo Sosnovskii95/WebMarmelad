@@ -5,7 +5,7 @@
     PropertyExpertModel property = new PropertyExpertModel();
 }
 @{
-    ViewData["Title"] = "Weight";
+    ViewData["Title"] = "Веса";
 }
 
 <div class="row">
@@ -17,7 +17,7 @@
 <div class="row">
     <div class="col-md-8">
         <div class="card-body">
-            <form asp-action="UpdateTableproperty" method="post">
+            <form asp-action="UpdateWeight" method="post">
                 <table class="table">
                     <thead>
                         <tr>
@@ -75,19 +75,19 @@
                                     }
                                     @Html.Hidden("Id", item.Id)
                                     <td>
-                                        @Html.DropDownList("BoxCostIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.CostIdValue))
+                                        @Html.DropDownList("CostIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.CostIdValue))
                                     </td>
                                     <td>
-                                        @Html.DropDownList("BoxElectricityIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerIdValue))
+                                        @Html.DropDownList("PowerIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerIdValue))
                                     </td>
                                     <td>
-                                        @Html.DropDownList("BoxPowerIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerCountIdValue))
+                                        @Html.DropDownList("PowerCountIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerCountIdValue))
                                     </td>
                                     <td>
-                                        @Html.DropDownList("BoxWaterIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.WaterIdValue))
+                                        @Html.DropDownList("WaterIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.WaterIdValue))
                                     </td>
                                     <td>
-                                        @Html.DropDownList("BoxAirIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.AirIdValue))
+                                        @Html.DropDownList("AirIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.AirIdValue))
                                     </td>
                                 </tr>
                                 i++;
@@ -152,19 +152,19 @@
                                     }
                                     @Html.Hidden("Id", item.Id)
                                     <td>
-                                        @Html.DropDownList("BoxCostIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.CostIdValue))
+                                        @Html.DropDownList("CostIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.CostIdValue))
                                     </td>
                                     <td>
-                                        @Html.DropDownList("BoxElectricityIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerIdValue))
+                                        @Html.DropDownList("PowerIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerIdValue))
                                     </td>
                                     <td>
-                                        @Html.DropDownList("BoxPowerIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerCountIdValue))
+                                        @Html.DropDownList("PowerCountIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.PowerCountIdValue))
                                     </td>
                                     <td>
-                                        @Html.DropDownList("BoxWaterIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.WaterIdValue))
+                                        @Html.DropDownList("WaterIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.WaterIdValue))
                                     </td>
                                     <td>
-                                        @Html.DropDownList("BoxAirIdConst", new SelectList(ViewBag.Weight, "Id", "NameValue", item.AirIdValue))
+                                        @Html.DropDownList("AirIdValue", new SelectList(ViewBag.Weight, "Id", "NameValue", item.AirIdValue))
                                     </td>
                                 </tr>
                                 i++;
@@ -186,12 +186,12 @@
                 </tr>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model=>Model.WeightModel.ElectricityWeight) = @Html.DisplayFor(model=>Model.WeightModel.ElectricityWeight)
+                        @Html.DisplayNameFor(model=>Model.WeightModel.PowerWeight) = @Html.DisplayFor(model=>Model.WeightModel.PowerWeight)
                     </th>
                 </tr>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model=>Model.WeightModel.PowerWeight) = @Html.DisplayFor(model=>Model.WeightModel.PowerWeight)
+                        @Html.DisplayNameFor(model=>Model.WeightModel.PowerCountWeight) = @Html.DisplayFor(model=>Model.WeightModel.PowerCountWeight)
                     </th>
                 </tr>
                 <tr>

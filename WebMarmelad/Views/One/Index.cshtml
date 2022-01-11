@@ -6,25 +6,31 @@
 }
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Однокретериальное";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="pb-1">
+            <div class="p-1">
+                <a asp-action="Create" class="btn btn-primary" role="button">Добавить</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-auto">
+            <div class="p-1">
                 <form asp-action="Index">
-                    <input id="filterCost" name="filterCost" type="number" value="@Model.FilterModel.SelectedCost" placeholder="Стоимость" />
-                    <input id="filterPower" name="filterPower" type="number" value="@Model.FilterModel.SelectedPower" placeholder="Электроэнергия" />
+                    <input id="filterCost" name="filterCost" type="number" value="@Model.FilterModel.SelectedCost" placeholder="Стоимость (руб)" />
+                    <input id="filterPower" name="filterPower" type="number" value="@Model.FilterModel.SelectedPower" placeholder="Электроэнергия (квТч)" />
                     <input id="filterPowerCount" name="filterPowerCount" type="number" value="@Model.FilterModel.SelectedPowerCount" placeholder="Мощность (ед)" />
                     <input id="filterPowerTime" name="filterPowerTime" type="number" value="@Model.FilterModel.SelectedPowerTime" placeholder="Затраты времени" />
                     <button class="btn btn-primary" type="submit">Поиск</button>
                 </form>
+            </div>
+        </div>
+        <div class="col-md-auto">
+            <div class="p-1">
+                <a asp-action="Reset" role="button" class="btn btn-danger">Сброс</a>
             </div>
         </div>
     </div>

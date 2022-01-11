@@ -7,17 +7,18 @@
             List<PropertyExpertModel> propertyExpertModels = new List<PropertyExpertModel>();
             int countList = 10;
             int count = 0;
+            Random random = new Random();
 
             for (int i = 0; i < countList; i++)
             {
                 PropertyExpertModel property = new PropertyExpertModel()
                 {
                     Id = i + 1,
-                    AirIdValue = i,
-                    CostIdValue = i,
-                    PowerCountIdValue = i,
-                    PowerIdValue = i,
-                    WaterIdValue = i
+                    AirIdValue = random.Next(0, 17),
+                    CostIdValue = random.Next(0, 17),
+                    PowerCountIdValue = random.Next(0, 17),
+                    PowerIdValue = random.Next(0, 17),
+                    WaterIdValue = random.Next(0, 17)
                 };
 
                 switch (count)

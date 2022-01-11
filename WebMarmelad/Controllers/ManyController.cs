@@ -11,6 +11,7 @@ using WebMarmelad.Models.FilterSortView;
 using WebMarmelad.ProductionData;
 using WebMarmelad.Models.Weight;
 using WebMarmelad.Models.PropertyValueExpert;
+using WebMarmelad.Models.Alternativ;
 
 namespace WebMarmelad.Controllers
 {
@@ -25,8 +26,8 @@ namespace WebMarmelad.Controllers
 
         // GET: Many
 
-        public async Task<IActionResult> Index(SortAscDesc sort, int? filterCost, int? filterPower,
-            int? filterPowerCount, int? filterPowerTime)
+        public async Task<IActionResult> Index(SortAscDesc sort, int? filterCost, int? filterPower, int? filterPowerCount, int? filterPowerTime,
+            bool pareto, bool hierarchy)
         {
             IQueryable<Production> data = _context.Productions;
 
@@ -68,9 +69,43 @@ namespace WebMarmelad.Controllers
                 resultFilter = false;
             }
 
-            if (resultFilter)
+            if (pareto)
             {
-                sort = SortAscDesc.PowerAsc;
+                if (resultFilter)
+                {
+                    Pareto paretoSolution = new Pareto();
+                    List<Production> productionSolution = await data.ToListAsync();
+                    productionSolution = paretoSolution.GetFindPareto(productionSolution);
+
+                    data = data.Where(p => productionSolution.Select(s => s.Id).Contains(p.Id));
+
+                    sort = SortAscDesc.PowerAsc;
+                }
+            }
+
+            if (hierarchy)
+            {
+                if (resultFilter)
+                {
+                    WeightAlternativ weightAlternativ = new WeightAlternativ(await _context.Expert.ToListAsync());
+
+                    List<Production> productionSolution = await data.ToListAsync();
+                    HierarchyMethods hierarchyMethods = new HierarchyMethods(productionSolution, weightAlternativ.GetMassAlternativ());
+                    productionSolution = hierarchyMethods.GetProductions();
+
+                    data = data.Where(p => productionSolution.Select(s => s.Id).Contains(p.Id));
+                    List<Production> productionSolutionTemp = await data.ToListAsync();
+
+                    for(int i = 0; i < productionSolution.Count; i++)
+                    {
+                        productionSolutionTemp[i].Weight = productionSolution[i].Weight;
+                    }
+
+                    _context.UpdateRange(productionSolutionTemp);
+                    _context.SaveChanges();
+
+                    sort = SortAscDesc.PowerAsc;
+                }
             }
 
             data = sort switch
@@ -91,6 +126,8 @@ namespace WebMarmelad.Controllers
                 SortAscDesc.PowerCountDesc => data.OrderByDescending(s => s.PowerCount),
                 SortAscDesc.PowerTimeAsc => data.OrderBy(s => s.PowerTime),
                 SortAscDesc.PowerTimeDesc => data.OrderByDescending(s => s.PowerTime),
+                SortAscDesc.WeightAsc=> data.OrderBy(s=>s.Weight),
+                SortAscDesc.WeightDesc => data.OrderByDescending(s=>s.Weight),
                 _ => data
             };
 
@@ -233,14 +270,77 @@ namespace WebMarmelad.Controllers
         {
             ValueExpertUtil value = new ValueExpertUtil();
             ViewBag.Weight = value.GetValueExperts();
+
+            WeightAlternativ weightAlternativ = new WeightAlternativ(await _context.Expert.ToListAsync());
             WeightViewModel model = new WeightViewModel()
             {
                 PropertyExpertOne = await _context.Expert.Take(5).ToListAsync(),
                 PropertyExpertTwo = await _context.Expert.Skip(5).ToListAsync(),
                 WeightModel = new WeightModel()
+                {
+                    CostWeight = weightAlternativ.GetMassAlternativ()[0],
+                    PowerWeight = weightAlternativ.GetMassAlternativ()[1],
+                    PowerCountWeight = weightAlternativ.GetMassAlternativ()[2],
+                    WaterWeight = weightAlternativ.GetMassAlternativ()[3],
+                    AirWeignt = weightAlternativ.GetMassAlternativ()[4],
+                    BestCriteria = weightAlternativ.GetMassAlternativ()[weightAlternativ.GetIndexBestAlternativ()],
+                    NameBestCriteria = GetNameBestCriteria(weightAlternativ.GetIndexBestAlternativ())
+
+                }
             };
 
             return View(model);
+        }
+
+        private string GetNameBestCriteria(int index)
+        {
+            string name = "";
+            switch (index)
+            {
+                case 0: name = "Стоимость (руб)"; break;
+                case 1: name = "Электроэнергия (квТч)"; break;
+                case 2: name = "Мощность (ед)"; break;
+                case 3: name = "Вода (куб)"; break;
+                case 4: name = "Воздух (т)"; break;
+                default: break;
+            }
+            return name;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateWeight(List<int> id, List<int> costIdValue,
+            List<int> powerIdValue, List<int> powerCountIdValue, List<int> waterIdValue, List<int> airIdValue)
+        {
+            for (int i = 0; i < id.Count; i++)
+            {
+                _context.Expert.Update(new PropertyExpertModel()
+                {
+                    Id = id[i],
+                    CostIdValue = costIdValue[i],
+                    PowerIdValue = powerIdValue[i],
+                    PowerCountIdValue = powerCountIdValue[i],
+                    WaterIdValue = waterIdValue[i],
+                    AirIdValue = airIdValue[i]
+                });
+            }
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Weight));
+        }
+
+        public async Task<IActionResult> Reset()
+        {
+            List<Production> productions = await _context.Productions.ToListAsync();
+
+            foreach(var item in productions)
+            {
+                item.Weight = 0;
+            }
+
+            _context.UpdateRange(productions);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

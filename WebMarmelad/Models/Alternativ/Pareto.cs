@@ -1,5 +1,5 @@
 ﻿using WebMarmelad.Models.CodeFirst;
-namespace WebMarmelad.Models.SolutionProblem
+namespace WebMarmelad.Models.Alternativ
 {
     public class Pareto
     {

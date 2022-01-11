@@ -225,5 +225,20 @@ namespace WebMarmelad.Controllers
         {
             return _context.Productions.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> Reset()
+        {
+            List<Production> productions = await _context.Productions.ToListAsync();
+
+            foreach(var item in productions)
+            {
+                item.Weight = 0;
+            }
+
+            _context.Productions.UpdateRange(productions);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

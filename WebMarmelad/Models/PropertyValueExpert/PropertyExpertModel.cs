@@ -7,19 +7,19 @@ namespace WebMarmelad.Models.PropertyValueExpert
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Цена")]
+        [Display(Name = "Стоимость (руб)")]
         public int CostIdValue { get; set; }
 
-        [Display(Name = "Электроэнергия")]
+        [Display(Name = "Электроэнергия (квТч)")]
         public int PowerIdValue { get; set; }
 
-        [Display(Name = "Кол-во")]
+        [Display(Name = "Мощность (ед)")]
         public int PowerCountIdValue { get; set; }
 
-        [Display(Name = "Вода")]
+        [Display(Name = "Вода (куб)")]
         public int WaterIdValue { get; set; }
 
-        [Display(Name = "Воздух")]
+        [Display(Name = "Воздух (т)")]
         public int AirIdValue { get; set; }
     }
 }

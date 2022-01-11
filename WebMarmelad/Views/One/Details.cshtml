@@ -1,14 +1,12 @@
 ﻿@model WebMarmelad.Models.CodeFirst.Production
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Подробности";
 }
 
-<h1>Details</h1>
+<h1>Подробности о производственной линии</h1>
 
 <div>
-    <h4>Production</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Name)
@@ -61,6 +59,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" role="button" class="btn btn-primary">Редактировать</a> |
+    <a asp-action="Index" role="button" class="btn btn-outline-secondary">Вернуться назад</a>
 </div>
