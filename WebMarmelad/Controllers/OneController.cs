@@ -67,7 +67,7 @@ namespace WebMarmelad.Controllers
 
             if (resultFilter)
             {
-                sort = SortAscDesc.PowerAsc;
+                //sort = SortAscDesc.PowerAsc;
             }
 
             data = sort switch

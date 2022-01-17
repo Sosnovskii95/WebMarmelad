@@ -79,7 +79,7 @@ namespace WebMarmelad.Controllers
 
                     data = data.Where(p => productionSolution.Select(s => s.Id).Contains(p.Id));
 
-                    sort = SortAscDesc.PowerAsc;
+                    //sort = SortAscDesc.PowerAsc;
                 }
             }
 
@@ -104,7 +104,7 @@ namespace WebMarmelad.Controllers
                     _context.UpdateRange(productionSolutionTemp);
                     _context.SaveChanges();
 
-                    sort = SortAscDesc.PowerAsc;
+                    //sort = SortAscDesc.PowerAsc;
                 }
             }
 

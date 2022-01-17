@@ -38,12 +38,12 @@ namespace WebMarmelad.ProductionData
                 {
                     Id = i + 1,
                     Name = "Линия " + (i + 1).ToString(),
-                    Cost = random.Next(1, 100) * random.Next(1, 100),
-                    Power = random.Next(1, 10000),
+                    Cost = random.Next(100, 600),
+                    Power = random.Next(50, 150),
                     Water = random.Next(1, 1000),
                     Air = air,
-                    PowerCount = random.Next(1, 10000),
-                    PowerTime = random.Next(1, 1000),
+                    PowerCount = random.Next(900, 1200),
+                    PowerTime = random.Next(450, 650),
                     Weight = 0
                 });
             }
